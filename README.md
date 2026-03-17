@@ -1,4 +1,4 @@
-# Praveen_POC
+# Playwright_POC
 
 This is a proof of concept project.
 
