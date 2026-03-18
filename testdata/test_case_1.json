@@ -1,0 +1,11 @@
+{
+  "testUser": {
+    "username": "tester",
+    "password": "password123",
+    "email": "tester@example.com"
+  },
+  "appConfig": {
+    "baseUrl": "https://example.com",
+    "timeout": 5000
+  }
+}

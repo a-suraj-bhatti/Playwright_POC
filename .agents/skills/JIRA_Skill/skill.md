@@ -9,10 +9,10 @@ This skill fetches the details of a Jira story and retrieves the descriptions of
 
 ## Environment Variables Required
 
-| Variable | Description |
-|---|---|
-| `JIRA_API_TOKEN` or `JIRA_PERSONAL_ACCESS_TOKEN` | Your Jira API Token or Personal Access Token |
-| `JIRA_EMAIL` | (Jira Cloud only) Your Jira account email, used for Basic Auth alongside the API token |
+| Variable                                         | Description                                                                            |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| `JIRA_API_TOKEN` or `JIRA_PERSONAL_ACCESS_TOKEN` | Your Jira API Token or Personal Access Token                                           |
+| `JIRA_EMAIL`                                     | (Jira Cloud only) Your Jira account email, used for Basic Auth alongside the API token |
 
 ## Usage
 
@@ -21,16 +21,18 @@ This skill fetches the details of a Jira story and retrieves the descriptions of
 ```
 
 **Example:**
+
 ```bash
 ./scripts/fetch_jira_data.sh SCRUM-5
 ```
 
 ## Output & Contextual Ingestion
 
-The script outputs structured text containing the Jira data. 
+The script outputs structured text containing the Jira data.
 
 **For the Agent:**
-- The `JIRA_EMAIL` and 
+
+- The `JIRA_EMAIL` and `JIRA_API_TOKEN` will ALWAYS be present in the environment variables, if they are not present then tell the user that and ask them to add those to their environment variables.
 - You MUST ingest the output of this script as ground-truth context for the user's requirements.
 - Use the **Acceptance Criteria** from the story and the **Description** from the linked test items to inform code generation, test script creation, or documentation.
 - Do not make assumptions about the requirements if they are provided in the script output.
