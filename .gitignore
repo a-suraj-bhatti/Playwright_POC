@@ -28,7 +28,8 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
-
+.env
+.playwright-mcp
 # Playwright
 /playwright-report/
 /blob-report/
