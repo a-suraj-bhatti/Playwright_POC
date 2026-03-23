@@ -9,6 +9,10 @@ export default tseslint.config(
   {
     ...playwright.configs['flat/recommended'],
     files: ['tests/**/*.ts', 'pages/**/*.ts', 'fixtures/**/*.ts'],
+    rules: {
+      ...playwright.configs['flat/recommended'].rules,
+      'playwright/expect-expect': 'error',
+    },
   },
   eslintConfigPrettier, // Add prettier configuration at the end to disable conflicting rules
   {

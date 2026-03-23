@@ -62,6 +62,9 @@ The project follows the **Page Object Model (POM)** pattern to ensure maintainab
 - Keep selectors inside the `constructor`.
 - Methods should perform actions or retrieve data, not contain complex assertions.
 - Reuse logic where possible.
+- `*.spec.ts` files must contain test declarations and test assertions only. Do not add helper functions, credential readers, data builders, or reusable workflow logic inside spec files.
+- If test setup logic is reusable, move it into a Page Object, fixture, or `utils/` module before finalizing the spec.
+- Credential access must not be implemented in spec files. Read `process.env` in a Page Object, fixture, or utility helper and expose a test-friendly method from there.
 
 ### TypeScript
 
@@ -96,6 +99,7 @@ When generating code or adding new features, follow these instructions to mainta
 - **New Page Objects**: Save in `pages/` (e.g., `pages/MyNewPage.ts`).
 - **New Test Files**: Save in `tests/` (e.g., `tests/my-new-test.spec.ts`).
 - **Utility Functions**: Save in `utils/` (e.g., `utils/dateHelpers.ts`).
+- **Spec File Boundary**: Keep `tests/*.spec.ts` focused on scenario flow and assertions. If you are about to add a top-level function, stop and move that logic elsewhere.
 
 ### 2. Integration with Fixtures
 
