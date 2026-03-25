@@ -30,6 +30,8 @@ blob-report/
 playwright/.cache/
 .env
 .playwright-mcp
+allure-results/
+allure-report/
 # Playwright
 /playwright-report/
 /blob-report/
