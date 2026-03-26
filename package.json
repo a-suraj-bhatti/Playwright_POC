@@ -8,6 +8,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "prepare": "husky",
+    "test:api": "playwright test tests/api",
     "test:allure": "playwright test",
     "allure:generate": "allure generate ./allure-results --clean -o ./allure-report",
     "allure:open": "allure open ./allure-report"
@@ -47,6 +48,7 @@
     "typescript-eslint": "^8.57.1"
   },
   "dependencies": {
-    "dotenv": "^17.3.1"
+    "dotenv": "^17.3.1",
+    "zod": "^4.3.6"
   }
 }

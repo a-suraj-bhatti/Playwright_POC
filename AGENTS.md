@@ -138,6 +138,42 @@ When generating code or adding new features, follow these instructions to mainta
 5. **Generate Test**: Create a `.spec.ts` file using the new fixture
 6. **Verify**: Run test against actual application to confirm locators work
 
+### 5. API Schema Validation with Zod
+
+- For API tests that validate response structure, use the custom Playwright matcher `toMatchSchema`.
+- Matcher location: `matchers/toMatchSchema.ts`
+- Type declaration location: `global.d.ts`
+- Example schema location: `schemas/todoSchema.ts`
+- Example usage:
+  ```typescript
+  const response = await request.get('/todos/1');
+  expect(response.ok()).toBeTruthy();
+  await expect(response).toMatchSchema(todoSchema);
+  ```
+- Prefer this matcher when the goal is to validate API response shape or contract, instead of writing repeated inline `schema.parse(...)` assertions in every spec.
+- When creating new API schemas, place them in `schemas/` and keep API specs focused on request flow and assertions.
+
+### 6. API Test Automation from JIRA
+
+- When a user asks to automate an API scenario from JIRA, first use the `JIRA_Skill` to fetch the story details, acceptance criteria, and linked QAlity test cases before writing code.
+- Treat linked QAlity tests as the primary source of detailed test behavior, and treat the story acceptance criteria as the business-level contract.
+- For API automation, extract and confirm the following from JIRA content whenever available:
+  - HTTP method
+  - endpoint or route
+  - expected response code
+  - request payload
+  - required headers
+  - authentication requirements
+  - expected response fields and data types
+- If the JIRA content describes the schema in plain English, convert that into a Zod schema in `schemas/`.
+- Place automated API specs under `tests/api/`.
+- Place reusable API response schemas under `schemas/`.
+- Use the custom matcher `await expect(response).toMatchSchema(schema)` for API response contract validation.
+- Keep API specs focused on request execution and assertions. Do not place reusable schema builders or helper logic inside the spec file.
+- Read base URLs, tokens, usernames, passwords, and other environment-specific values from `.env` or `process.env`. Never hardcode secrets in specs or schema files.
+- If JIRA content is incomplete or ambiguous, do not guess endpoint behavior, authentication, headers, or payload structure. Surface the missing information clearly and proceed only with what is grounded in the fetched requirements.
+- If both UI and API scenarios exist in the same story, separate them clearly and automate the API scenario in `tests/api/` instead of mixing API validation into UI specs.
+
 ---
 
 ## 🤖 Agent Skills & Workflows

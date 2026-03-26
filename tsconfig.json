@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "esModuleInterop": true,
+    "lib": ["DOM", "ES2022"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
+    "types": ["node", "@playwright/test"]
+  },
+  "include": [
+    "global.d.ts",
+    "fixtures/**/*.ts",
+    "matchers/**/*.ts",
+    "pages/**/*.ts",
+    "playwright.config.ts",
+    "schemas/**/*.ts",
+    "tests/**/*.ts",
+    "utils/**/*.ts"
+  ],
+  "exclude": [
+    "allure-report",
+    "allure-results",
+    "node_modules",
+    "playwright-report",
+    "test-results"
+  ]
+}
